@@ -1,0 +1,5 @@
+event_id,order_id,date,kind,amount,cost,fee,channel,currency
+E1,O1,2026-10-01,sale,200,80,6,website,USD
+E2,O2,2026-10-02,sale,100,70,15,marketplace,USD
+E3,O3,2026-10-03,sale,300,120,9,website,USD
+R1,O2,2026-10-04,refund,60,0,2,marketplace,USD
