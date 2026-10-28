@@ -1,0 +1,9 @@
+Sales Analysis Agent | Reporting & Evidence-Based Review
+
+Python Developer | AI Analytics & Reporting Automation
+
+Built a sales analysis agent that calls deterministic reporting tools, investigates channel metrics, and creates evidence-linked management review tasks. Python validates orders and refunds and calculates financial metrics before AI interpretation. A live run identified negative marketplace contribution and queued a review task while separating facts from hypotheses. Fictional, single-currency data; contribution is not net profit. Source transactions are read-only and no external action is executed.
+
+Skills: AI Agent Development, AI Automation, Python, Data Analysis, Data Visualization
+
+Image caption: Live model run: inspect validated metrics, analyze negative channel contribution, and create a pending management review task.

@@ -1,0 +1,84 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Sales Analysis Agent · Live execution</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f0f4f7;color:#162d41;font:15px/1.55 system-ui}main{max-width:1240px;margin:auto;padding:32px}header{background:#12354a;color:#fff;border-radius:18px;padding:28px 32px}header small{color:#7be3c6;letter-spacing:1.5px}h1{font-size:34px;line-height:1.2;margin:10px 0}h2{font-size:19px;margin:0 0 14px}header p{margin:8px 0}.status{display:flex;gap:12px;margin:18px 0;flex-wrap:wrap}.tag{display:inline-block;background:#d9f1e8;color:#155c45;font-size:11px;font-weight:750;border-radius:6px;padding:6px 10px}.note{color:#536b7b;font-size:13px}section{background:#fff;border:1px solid #d8e2e8;border-radius:14px;padding:22px;margin:16px 0}.grid{display:grid;grid-template-columns:1fr 1.05fr;gap:18px;align-items:start}.tool{display:flex;gap:12px;border-bottom:1px solid #e4edf1;padding:15px 0}.tool:last-child{border:0}.num{background:#e6f2f5;border-radius:50%;min-width:28px;height:28px;text-align:center;line-height:28px}small{display:block;color:#637a8b;font-size:12px}pre{font:12px/1.5 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere}summary{font-size:12px;cursor:pointer;color:#19725e}.task{border-left:3px solid #c79620;padding:12px 16px;background:#fff9e9;margin-top:12px}.task .tag{background:#ffe9ad;color:#755514}.answer{font-size:14px}footer{font-size:12px;color:#627888;margin:20px 0}</style></head><body><main><header><small>AI AUTOMATION / TOOL-CALLING AGENT / WORKFLOW</small><h1>Sales Analysis Agent</h1><p>Validated financial metrics → exception analysis → review task</p></header><div class="status"><span class="tag">LIVE MODEL RUN · COMPLETED</span><span class="tag">3 TOOL CALLS</span><span class="tag">25 TESTS PASSED</span></div><p class="note">Real inference through a configured OpenAI-compatible endpoint. Fictional business data. Tool execution and approval storage are local; no external delivery.</p><section><h2>Task input</h2>Use tools to review channel contribution and inspect the main exception. Create a pending management review task using propose_review_task. Then summarize the tool results, distinguish facts from hypotheses, and state the actual proposal ID.</section><div class="grid"><section><h2>Agent execution trace</h2><div class="tool"><span class="num">1</span><div><strong>get_sales_metrics</strong><small>Executed locally · actual model-selected tool</small><pre>{}</pre><details><summary>Inspect actual result</summary><pre>{
+  &quot;status&quot;: &quot;ok&quot;,
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;order_count&quot;: 3,
+  &quot;average_order_value&quot;: &quot;200.00&quot;,
+  &quot;totals&quot;: {
+    &quot;gross&quot;: &quot;600.00&quot;,
+    &quot;refunds&quot;: &quot;60.00&quot;,
+    &quot;cost&quot;: &quot;270.00&quot;,
+    &quot;fees&quot;: &quot;32.00&quot;,
+    &quot;net&quot;: &quot;540.00&quot;,
+    &quot;contribution&quot;: &quot;238.00&quot;
+  },
+  &quot;channels&quot;: {
+    &quot;website&quot;: {
+      &quot;orders&quot;: 2,
+      &quot;gross&quot;: &quot;500.00&quot;,
+      &quot;refunds&quot;: &quot;0.00&quot;,
+      &quot;cost&quot;: &quot;200.00&quot;,
+      &quot;fees&quot;: &quot;15.00&quot;,
+      &quot;net&quot;: &quot;500.00&quot;,
+      &quot;contribution&quot;: &quot;285.00&quot;,
+      &quot;contribution_margin_pct&quot;: &quot;57.00&quot;
+    },
+    &quot;marketplace&quot;: {
+      &quot;orders&quot;: 1,
+      &quot;gross&quot;: &quot;100.00&quot;,
+      &quot;refunds&quot;: &quot;60.00&quot;,
+      &quot;cost&quot;: &quot;70.00&quot;,
+      &quot;fees&quot;: &quot;17.00&quot;,
+      &quot;net&quot;: &quot;40.00&quot;,
+      &quot;contribution&quot;: &quot;-47.00&quot;,
+      &quot;contribution_margin_pct&quot;: &quot;-117.50&quot;
+    }
+  },
+  &quot;daily_net&quot;: {
+    &quot;2026-10-01&quot;: &quot;200.00&quot;,
+    &quot;2026-10-02&quot;: &quot;100.00&quot;,
+    &quot;2026-10-03&quot;: &quot;300.00&quot;,
+    &quot;2026-10-04&quot;: &quot;-60.00&quot;
+  },
+  &quot;alerts&quot;: [
+    {
+      &quot;channel&quot;: &quot;marketplace&quot;,
+      &quot;reason&quot;: &quot;negative contribution after costs and fees&quot;
+    }
+  ]
+}</pre></details></div></div><div class="tool"><span class="num">2</span><div><strong>get_channel_metrics</strong><small>Executed locally · actual model-selected tool</small><pre>{&quot;channel&quot;: &quot;marketplace&quot;}</pre><details><summary>Inspect actual result</summary><pre>{
+  &quot;channel&quot;: &quot;marketplace&quot;,
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;metrics&quot;: {
+    &quot;orders&quot;: 1,
+    &quot;gross&quot;: &quot;100.00&quot;,
+    &quot;refunds&quot;: &quot;60.00&quot;,
+    &quot;cost&quot;: &quot;70.00&quot;,
+    &quot;fees&quot;: &quot;17.00&quot;,
+    &quot;net&quot;: &quot;40.00&quot;,
+    &quot;contribution&quot;: &quot;-47.00&quot;,
+    &quot;contribution_margin_pct&quot;: &quot;-117.50&quot;
+  }
+}</pre></details></div></div><div class="tool"><span class="num">3</span><div><strong>propose_review_task</strong><small>Executed locally · actual model-selected tool</small><pre>{&quot;channel&quot;: &quot;marketplace&quot;, &quot;recommendation&quot;: &quot;Hypothesis: Review the marketplace transaction and validate the refund, cost, and fee inputs and relevant channel terms; assess whether any operational or pricing changes are warranted. Do not alter source transactions without human approval.&quot;}</pre><details><summary>Inspect actual result</summary><pre>{
+  &quot;proposal_id&quot;: &quot;d0837ce8-c2a3-5fe4-a114-b3feb5b4f5da&quot;,
+  &quot;status&quot;: &quot;pending_human_approval&quot;,
+  &quot;action&quot;: {
+    &quot;kind&quot;: &quot;analysis_review&quot;,
+    &quot;channel&quot;: &quot;marketplace&quot;,
+    &quot;recommendation&quot;: &quot;Hypothesis: Review the marketplace transaction and validate the refund, cost, and fee inputs and relevant channel terms; assess whether any operational or pricing changes are warranted. Do not alter source transactions without human approval.&quot;,
+    &quot;evidence&quot;: {
+      &quot;channel&quot;: &quot;marketplace&quot;,
+      &quot;currency&quot;: &quot;USD&quot;,
+      &quot;metrics&quot;: {
+        &quot;orders&quot;: 1,
+        &quot;gross&quot;: &quot;100.00&quot;,
+        &quot;refunds&quot;: &quot;60.00&quot;,
+        &quot;cost&quot;: &quot;70.00&quot;,
+        &quot;fees&quot;: &quot;17.00&quot;,
+        &quot;net&quot;: &quot;40.00&quot;,
+        &quot;contribution&quot;: &quot;-47.00&quot;,
+        &quot;contribution_margin_pct&quot;: &quot;-117.50&quot;
+      }
+    }
+  }
+}</pre></details></div></div><h2 style="margin-top:24px">Review queue</h2><div class="task"><span class="tag">PENDING HUMAN APPROVAL</span><p>Hypothesis: Review the marketplace transaction and validate the refund, cost, and fee inputs and relevant channel terms; assess whether any operational or pricing changes are warranted. Do not alter source transactions without human approval.</p><small>Kind: analysis_review<br>Proposal: d0837ce8-c2a3-5fe4-a114-b3feb5b4f5da</small></div></section><section><h2>Actual model output</h2><div class="answer">## Channel contribution review<br><br><strong>Facts from the metrics tools (USD):</strong><br>- <strong>Website:</strong> 2 orders; contribution <strong>$285.00</strong>; contribution margin <strong>57.00%</strong>.<br>- <strong>Marketplace:</strong> 1 order; contribution <strong>−$47.00</strong>; contribution margin <strong>−117.50%</strong>. Its metrics show gross <strong>$100.00</strong>, refunds <strong>$60.00</strong>, cost <strong>$70.00</strong>, fees <strong>$17.00</strong>, and net <strong>$40.00</strong>.<br>- The overall metrics flagged marketplace for negative contribution after costs and fees. The marketplace detail inspection confirmed the same figures.<br><br><strong>Hypothesis / review proposal:</strong> Review the marketplace transaction and validate its refund, cost, and fee inputs and relevant channel terms; then assess whether any changes are warranted. This is a review hypothesis, not a conclusion about what caused the negative contribution.<br><br><strong>Task status:</strong> The management review task was created with status <strong>pending human approval</strong>. Proposal ID: <strong>d0837ce8-c2a3-5fe4-a114-b3feb5b4f5da</strong>.<br><br><strong>Evidence and limitations:</strong> Findings are based on the sales metrics and marketplace detail returned by the tools. Contribution is not net profit; the available metrics do not establish causation or account for missing costs. No source transactions were changed.</div></section></div><footer>Run da760db7-73db-4217-9a5e-099c225753f0 · Evidence: live-result.json<br>Human approval records decisions only. External messages and business updates are not executed. This is a local prototype, not a deployed customer system.</footer></main></body></html>
